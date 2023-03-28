@@ -7,13 +7,14 @@ import {
   Flex, 
   FormControl, 
   Button, 
-  Input, 
   FormErrorMessage,
-  FormLabel,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod';
+
+import { Input } from '@/components/form/input.component';
+import { Label } from '@/components/form/label.component';
 
 import { theme } from '../../../styles/theme';
 
@@ -76,48 +77,24 @@ const RecoveryPasswordPage: NextPage<RecoveryPasswordProps> = ({ params }) => {
           isInvalid={!!(errors.password || errors.confirmPassword)} 
           mt="16px"
         >
-          <FormLabel htmlFor="password" fontWeight="normal" mb="2px" color="#D4D4D8">
-            Senha
-          </FormLabel>
+          <Label htmlFor="password">Senha</Label>
           <Input 
-            {...register('password')}
+            register={register}
             type="password"
             id="password"
             placeholder="Digite sua senha" 
-            bgColor="#27272A"
-            border="none"
-            _placeholder={{
-              color: '#71717A'
-            }}
-            _focus={{
-              outlineColor: '#5B21B6',
-              boxShadow: 'none',
-              border: 'none',
-            }}
             isInvalid={!!errors.password}
           />
           {errors.password?.message && (
             <FormErrorMessage>{errors.password.message}</FormErrorMessage>
           )}
 
-          <FormLabel htmlFor="confirmPassword" fontWeight="normal" mb="2px" color="#D4D4D8" mt="16px">
-            Confirmar senha
-          </FormLabel>
+          <Label htmlFor="confirmPassword" mt="16px">Confirmar senha</Label>
           <Input 
-            {...register('confirmPassword')}
+            register={register}
             type="password"
             id="confirmPassword" 
             placeholder="Confirme sua senha" 
-            bgColor="#27272A"
-            border="none"
-            _placeholder={{
-              color: '#71717A'
-            }}
-            _focus={{
-              outlineColor: '#5B21B6',
-              boxShadow: 'none',
-              border: 'none',
-            }}
             isInvalid={!!errors.confirmPassword}
           />
           {errors.confirmPassword?.message && (
