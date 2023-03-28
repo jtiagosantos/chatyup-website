@@ -74,7 +74,9 @@ const RecoveryPasswordPage: NextPage<RecoveryPasswordProps> = ({ params }) => {
           isInvalid={!!(errors.password || errors.confirmPassword)} 
           mt="16px"
         >
-          <FormLabel htmlFor="password" fontWeight="normal" mb="2px" color="#D4D4D8">Senha</FormLabel>
+          <FormLabel htmlFor="password" fontWeight="normal" mb="2px" color="#D4D4D8">
+            Senha
+          </FormLabel>
           <Input 
             {...register('password')}
             type="password"
@@ -96,7 +98,9 @@ const RecoveryPasswordPage: NextPage<RecoveryPasswordProps> = ({ params }) => {
             <FormErrorMessage>{errors.password.message}</FormErrorMessage>
           )}
 
-          <FormLabel htmlFor="confirmPassword" fontWeight="normal" mb="2px" color="#D4D4D8" mt="16px">Confirmar senha</FormLabel>
+          <FormLabel htmlFor="confirmPassword" fontWeight="normal" mb="2px" color="#D4D4D8" mt="16px">
+            Confirmar senha
+          </FormLabel>
           <Input 
             {...register('confirmPassword')}
             type="password"
