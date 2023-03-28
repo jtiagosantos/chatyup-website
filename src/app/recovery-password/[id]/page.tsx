@@ -29,7 +29,7 @@ const recoveryPasswordSchema = z.object({
     .string()
     .min(1, { message: 'Campo obrigatório' })
     .min(6, { message: 'Mínimo de 6 caracteres' })
-})
+});
 
 type RecoveryPasswordFormData = z.infer<typeof recoveryPasswordSchema>;
 
