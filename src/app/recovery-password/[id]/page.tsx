@@ -1,6 +1,6 @@
 'use client';
 
-import type { NextPage } from 'next';
+import { useRouter } from 'next/navigation';
 import { 
   ChakraProvider, 
   Text, 
@@ -17,6 +17,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { theme } from '../../../styles/theme';
 
+import type { NextPage } from 'next';
 import type { SubmitHandler } from 'react-hook-form';
 
 const recoveryPasswordSchema = z.object({
@@ -48,6 +49,7 @@ const RecoveryPasswordPage: NextPage<RecoveryPasswordProps> = ({ params }) => {
     },
     resolver: zodResolver(recoveryPasswordSchema),
   });
+  const router = useRouter();
 
   const handleUpdatePassword: SubmitHandler<RecoveryPasswordFormData> = async ({ 
     password,
@@ -58,7 +60,7 @@ const RecoveryPasswordPage: NextPage<RecoveryPasswordProps> = ({ params }) => {
       return;
     }
 
-    console.log(password);
+    router.push('/recovery-password/success');
   }
 
   return (
