@@ -7,7 +7,7 @@ import { theme } from '../../../styles/theme';
 
 import successIcon from '../../../assets/success-icon.svg';
 
-export const RecoveryPasswordSuccessPage = () => {
+const RecoveryPasswordSuccessPage = () => {
   return (
     <ChakraProvider theme={theme}>
       <Flex maxW="350px" flexDir="column" align="center" justify="center" mx="auto" p="24px">
