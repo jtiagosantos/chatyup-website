@@ -80,7 +80,6 @@ const RecoveryPasswordPage: NextPage<RecoveryPasswordProps> = ({ params }) => {
           <Label htmlFor="password">Senha</Label>
           <Input 
             register={register}
-            type="password"
             id="password"
             placeholder="Digite sua senha" 
             isInvalid={!!errors.password}
@@ -92,7 +91,6 @@ const RecoveryPasswordPage: NextPage<RecoveryPasswordProps> = ({ params }) => {
           <Label htmlFor="confirmPassword" mt="16px">Confirmar senha</Label>
           <Input 
             register={register}
-            type="password"
             id="confirmPassword" 
             placeholder="Confirme sua senha" 
             isInvalid={!!errors.confirmPassword}
