@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { 
   ChakraProvider, 
@@ -12,6 +13,8 @@ import {
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+
+import { UpdatePasswordService } from '@/modules/user/services/update-password.service';
 
 import { Input } from '@/components/form/input.component';
 import { Label } from '@/components/form/label.component';
@@ -41,6 +44,7 @@ interface RecoveryPasswordProps {
 }
 
 const RecoveryPasswordPage: NextPage<RecoveryPasswordProps> = ({ params }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const { register, handleSubmit, setError, formState: { errors } } = useForm<
     RecoveryPasswordFormData
   >({
@@ -56,10 +60,18 @@ const RecoveryPasswordPage: NextPage<RecoveryPasswordProps> = ({ params }) => {
     password,
     confirmPassword,
   }) => {
+    setIsLoading(true);
+
     if (password !== confirmPassword) {
       setError('confirmPassword', { message: 'As senhas não coincidem' });
+      setIsLoading(false);
+
       return;
     }
+
+    await UpdatePasswordService.execute({ userId: params.id, password });
+
+    setIsLoading(false);
 
     router.push('/recovery-password/success');
   }
@@ -105,6 +117,7 @@ const RecoveryPasswordPage: NextPage<RecoveryPasswordProps> = ({ params }) => {
             bgColor="#5B21B6" 
             mt="24px" 
             fontWeight="normal"
+            isLoading={isLoading}
             _hover={{
               opacity: 0.8,
             }}
