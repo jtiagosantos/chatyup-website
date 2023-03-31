@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { ChakraProvider, Flex, Text, Button } from '@chakra-ui/react';
+import { ChakraProvider, Flex, Text } from '@chakra-ui/react';
 
 import { theme } from '../../../styles/theme';
 
@@ -14,18 +14,7 @@ const RecoveryPasswordSuccessPage = () => {
         <Image width={80} height={80} src={successIcon} quality={100} alt="" />
         <Text fontSize="24px" fontWeight="bold">SUCESSO!</Text>
         <Text mt="16px" mb="24px">Sua senha foi alterada com sucesso</Text>
-        <Button 
-            bgColor="#5B21B6" 
-            fontWeight="normal"
-            _hover={{
-              opacity: 0.8,
-            }}
-            _active={{
-              bgColor: '#5B21B6',
-            }}
-          >
-            Voltar para o APP
-          </Button>
+        <Text textAlign="center">Você já pode fechar esta tela e voltar para o App</Text>
       </Flex>
     </ChakraProvider>
   );
